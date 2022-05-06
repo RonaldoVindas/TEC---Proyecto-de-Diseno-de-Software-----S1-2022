@@ -28,7 +28,7 @@ const CompCreateBlog = () => {
                         className='form-control'/>
                 </div>
                 <div className='mb-3'>
-                    <label className='form-label'>Title</label>
+                    <label className='form-label'>Content</label>
                     <textarea
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
