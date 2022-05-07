@@ -1,7 +1,7 @@
 import {Sequelize} from "sequelize";
 
 const db = new Sequelize(
-    "database_app",
+    "park_tec",
     "root",
     "QWER1234", {
         dialect: "mysql"

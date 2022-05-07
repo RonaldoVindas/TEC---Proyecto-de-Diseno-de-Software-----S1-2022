@@ -11,12 +11,12 @@ export const getAllEmails = async (req, res) => {
 
 export const getEmail = async (req, res) => {
     try {
-        const emails = await EmailModel.findAll({
+        const email = await EmailModel.findAll({
             where: {
                 id_email: req.params.id
             }
         });
-        res.json(emails[0]);
+        res.json(email[0]);
     } catch (error) {
         res.json( {message: error.message} );
     }
