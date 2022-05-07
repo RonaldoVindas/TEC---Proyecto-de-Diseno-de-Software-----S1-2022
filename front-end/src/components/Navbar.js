@@ -1,12 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
-const btnInfoStyle = {
-  marginTop: "15px",
-  marginBottom: "15px",
-  marginLeft: "15px",
-  marginRight: "15px"
-}
+import url_img from "../parking-lot-cars.jpg"
 
 const NavbarComponent = () => {
   return (
@@ -21,6 +15,13 @@ const NavbarComponent = () => {
               </form>
           </div>
       </nav>
+      <div className="bg_image"
+        style={{
+          backgroundImage: `url(${url_img})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: 657
+        }}></div>
     </div>
   )
 }

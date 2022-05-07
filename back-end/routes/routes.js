@@ -16,11 +16,11 @@ router.post('/', createBlog);
 router.put('/:id', updateBlog);
 router.delete('/:id', deleteBlog);*/
 ////////////////////////////////////////////////////ROUTES DEPARTMENT
-router.get('/', getAllDepartments);
-router.get('/:id', getDepartment);
-router.post('/', createDepartment);
-router.put('/:id', updateDepartment);
-router.delete('/:id', deleteDepartment);
+router.get('registrarDepartamento/', getAllDepartments);
+router.get('registrarDepartamento/:id', getDepartment);
+router.post('registrarDepartamento/', createDepartment);
+router.put('registrarDepartamento/:id', updateDepartment);
+router.delete('registrarDepartamento/:id', deleteDepartment);
 ////////////////////////////////////////////////////ROUTES EMAIL
 router.get('registrarUsuario/', getAllEmails);
 router.get('registrarUsuario/:id', getEmail);
