@@ -16,10 +16,6 @@ try {
     console.log("Error connection DB: $", {error});
 }
 
-/*app.get('/', (req, res) => {
-    res.send("Hola")
-});*/
-
 app.listen(8000, () => {
     console.log("Server running");
 })
