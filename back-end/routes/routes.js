@@ -10,10 +10,25 @@ import { getAllVehicles, getVehicle, createVehicle, updateVehicle, deleteVehicle
 
 const router = express.Router();
 
-router.get('/', getAllBlogs);
+/*router.get('/', getAllBlogs);
 router.get('/:id', getBlog);
 router.post('/', createBlog);
 router.put('/:id', updateBlog);
-router.delete('/:id', deleteBlog);
+router.delete('/:id', deleteBlog);*/
+////////////////////////////////////////////////////ROUTES DEPARTMENT
+
+////////////////////////////////////////////////////ROUTES EMAIL
+
+////////////////////////////////////////////////////ROUTES PARKING
+router.get('agregarParqueo/', getAllParkings);
+router.get('agregarParqueo/:id', getParking);
+router.post('agregarParqueo/', createParking);
+router.put('agregarParqueo/:id', updateParking);
+router.delete('agregarParqueo/:id', deleteParking);
+////////////////////////////////////////////////////ROUTES USER_X_EMAIL
+
+////////////////////////////////////////////////////ROUTES USER
+
+////////////////////////////////////////////////////ROUTES VEHICLE
 
 export default router;
