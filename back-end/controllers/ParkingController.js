@@ -11,10 +11,10 @@ export const getAllParkings = async (req, res) => {
 
 export const getParking = async (req, res) => {
     try {
-        const parking = await ParkingModel.findAll({
-            where: { id_parking: req.params.id }
+        const parkings = await ParkingModel.findAll({
+            where: { id: req.params.id }
         });
-        res.json(parking[0]);
+        res.json(parkings[0]);
     } catch (error) {
         res.json( {message: error.message} );
     }
@@ -34,7 +34,7 @@ export const createParking = async (req, res) => {
 export const updateParking = async (req, res) => {
     try {
         await ParkingModel.update(req.body, {
-            where: {id_parking: req.params.id}
+            where: {id: req.params.id}
         });
         res.json({
             "message":"Parqueo actualizado"
@@ -47,7 +47,7 @@ export const updateParking = async (req, res) => {
 export const deleteParking = async (req, res) => {
     try {
         await ParkingModel.destroy({
-            where: {id_parking: req.params.id}
+            where: {id: req.params.id}
         });
         res.json({
             "message":"Parqueo borrado"

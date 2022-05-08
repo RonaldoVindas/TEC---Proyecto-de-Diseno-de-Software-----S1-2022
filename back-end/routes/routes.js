@@ -16,25 +16,25 @@ router.post('/', createBlog);
 router.put('/:id', updateBlog);
 router.delete('/:id', deleteBlog);*/
 ////////////////////////////////////////////////////ROUTES DEPARTMENT
-router.get('registrarDepartamento/', getAllDepartments);
-router.get('registrarDepartamento/:id', getDepartment);
-router.post('registrarDepartamento/', createDepartment);
-router.put('registrarDepartamento/:id', updateDepartment);
-router.delete('registrarDepartamento/:id', deleteDepartment);
+/*router.get('departamento/', getAllDepartments);
+router.get('departamento/:id', getDepartment);
+router.post('crearDepartamento/', createDepartment);
+router.put('editarDepartamento/:id', updateDepartment);
+router.delete('departamento/:id', deleteDepartment);
 ////////////////////////////////////////////////////ROUTES EMAIL
 router.get('registrarUsuario/', getAllEmails);
 router.get('registrarUsuario/:id', getEmail);
 router.post('registrarUsuario/', createEmail);
 router.put('registrarUsuario/:id', updateEmail);
-router.delete('registrarUsuario/:id', deleteEmail);
+router.delete('registrarUsuario/:id', deleteEmail);*/
 ////////////////////////////////////////////////////ROUTES PARKING
-router.get('agregarParqueo/', getAllParkings);
-router.get('agregarParqueo/:id', getParking);
-router.post('agregarParqueo/', createParking);
-router.put('agregarParqueo/:id', updateParking);
-router.delete('agregarParqueo/:id', deleteParking);
+router.get('/', getAllParkings);
+router.get('/:id', getParking);
+router.post('/', createParking);
+router.put('/:id', updateParking);
+router.delete('/:id', deleteParking);
 ////////////////////////////////////////////////////ROUTES USER_X_EMAIL
-router.get('registrarUsuario/', getAllUser_x_Email);
+/*router.get('registrarUsuario/', getAllUser_x_Email);
 router.get('registrarUsuario/:id', getUser_x_Email);
 router.post('registrarUsuario/', createUser_x_Email);
 router.put('registrarUsuario/:id', updateUser_x_Email);
@@ -50,6 +50,6 @@ router.get('registrarVehiculo/', getAllVehicles);
 router.get('registrarVehiculo/:id', getVehicle);
 router.post('registrarVehiculo/', createVehicle);
 router.put('registrarVehiculo/:id', updateVehicle);
-router.delete('registrarVehiculo/:id', deleteVehicle);
+router.delete('registrarVehiculo/:id', deleteVehicle);*/
 
 export default router;

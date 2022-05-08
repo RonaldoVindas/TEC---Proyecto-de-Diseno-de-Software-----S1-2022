@@ -39,12 +39,12 @@ const GestionAdminComponent = () => {
                 </div>
             </nav>
             <div className='centerButton'>
-                <Link to={`/agregarParqueo/`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-square-parking" style={iconStyle}></i></Link>
-                <Link to={`/contactarUsuario/`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-envelope" style={iconStyle}></i></Link>
+                <Link to={`/parqueo`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-square-parking" style={iconStyle}></i></Link>
+                <Link to={`/contactarUsuario`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-envelope" style={iconStyle}></i></Link>
             </div>
             <div className='centerButton'>
-                <Link to={`/editarPerfil/`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}></i></Link>
-                <Link to={`/informes/`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-chart-pie" style={iconStyle}></i></Link>
+                <Link to={`/editarPerfil`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}></i></Link>
+                <Link to={`/informes`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-chart-pie" style={iconStyle}></i></Link>
             </div>
         </div>
     )
