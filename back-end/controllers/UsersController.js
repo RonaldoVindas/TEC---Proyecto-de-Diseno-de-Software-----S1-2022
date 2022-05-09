@@ -23,6 +23,7 @@ export const getUser = async (req, res) => {
 export const createUser = async (req, res) => {
     try {
         await UserModel.create(req.body)
+        console.log(req.body);
         res.json({
             "message":"Usuario creado"
         });

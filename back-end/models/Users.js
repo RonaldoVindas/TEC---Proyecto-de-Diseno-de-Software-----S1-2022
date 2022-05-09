@@ -6,7 +6,7 @@ const UserModel = db.define('users', {
     password_user: { type: DataTypes.STRING },
     type_user: { type: DataTypes.STRING },
     phone_number: { type: DataTypes.STRING },
-    id_departament: { type: DataTypes.INTEGER }
+    id_department: { type: DataTypes.INTEGER }
 });
 
 export default UserModel;

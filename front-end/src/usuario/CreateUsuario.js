@@ -16,11 +16,12 @@ const btnInfoNavStyle = {
 const CompCreateUsuario = () => {
     const [description_department, setDescription_department] = useState('')
     const [email, setEmail] = useState('')
+
     const [full_name, setFull_name] = useState('')
     const [password_user, setPassword_user] = useState('')
     const [type_user, setType_user] = useState('')
     const [phone_number, setPhone_number] = useState('')
-    const [id_departament, setId_departament] = useState('')
+    const [id_department, setId_department] = useState('')
     
     const [departments, setDepartments] = useState([])
     useEffect( () => {
@@ -44,7 +45,7 @@ const CompCreateUsuario = () => {
 
     const createUser = async (e) => {
         e.preventDefault()
-        await axios.post(URI, {full_name: full_name, password_user: password_user, type_user: type_user, phone_number: phone_number, id_departament: id_departament})
+        await axios.post(URI, {full_name: full_name, password_user: password_user, type_user: type_user, phone_number: phone_number, id_department: id_department})
         navigate('/management')
     }
 
@@ -95,18 +96,18 @@ const CompCreateUsuario = () => {
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Type of User</label>
-                        <select className="form-select" aria-label="Default select example">
+                        <select className="form-select" aria-label="Default select example" value={type_user} onChange={(e) => setType_user(e.target.value)}>
                             <option selected>Select a type</option>
-                            <option value={type_user} onChange={(e) => setType_user(e.target.value)} className="form-select">Admin</option>
-                            <option value={type_user} onChange={(e) => setType_user(e.target.value)} className="form-select">User</option>
+                            <option value="ADMIN" className="form-select">Admin</option>
+                            <option value="USER" className="form-select">User</option>
                         </select>
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Department</label>
-                        <select className="form-select" aria-label="Default select example">
+                        <select className="form-select" aria-label="Default select example" value={id_department} onChange={(e) => setId_department(e.target.value)}>
                             <option selected>Select a Department</option>
                             { departments.map((department) => (
-                                <option key={department.id} value={id_departament} onChange={(e) => setId_departament(e.target.value)} className="form-select">{department.id}</option>
+                                <option key={department.id} value={department.id} className="form-select">{department.name_department}</option>
                             ))}
                         </select>
                     </div>
