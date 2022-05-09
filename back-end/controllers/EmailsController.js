@@ -13,7 +13,7 @@ export const getEmail = async (req, res) => {
     try {
         const email = await EmailModel.findAll({
             where: {
-                id_email: req.params.id
+                id: req.params.id
             }
         });
         res.json(email[0]);
@@ -36,7 +36,7 @@ export const createEmail = async (req, res) => {
 export const updateEmail = async (req, res) => {
     try {
         await EmailModel.update(req.body, {
-            where: {id_email: req.params.id}
+            where: {id: req.params.id}
         });
         res.json({
             "message":"Email actualizado"
@@ -49,7 +49,7 @@ export const updateEmail = async (req, res) => {
 export const deleteEmail = async (req, res) => {
     try {
         await EmailModel.destroy({
-            where: {id_email: req.params.id}
+            where: {id: req.params.id}
         });
         res.json({
             "message":"Email borrado"

@@ -13,7 +13,7 @@ export const getDepartment = async (req, res) => {
     try {
         const departament = await DepartmentModel.findAll({
             where: {
-                id_departament: req.params.id
+                id: req.params.id
             }
         });
         res.json(departament[0]);
@@ -24,7 +24,7 @@ export const getDepartment = async (req, res) => {
 
 export const createDepartment = async (req, res) => {
     try {
-        await DepartamentModel.create(req.body)
+        await DepartmentModel.create(req.body)
         res.json({
             "message":"Departamento creado"
         });
@@ -36,7 +36,7 @@ export const createDepartment = async (req, res) => {
 export const updateDepartment = async (req, res) => {
     try {
         await DepartmentModel.update(req.body, {
-            where: {id_departament: req.params.id}
+            where: {id: req.params.id}
         });
         res.json({
             "message":"Departamento actualizado"
@@ -49,7 +49,7 @@ export const updateDepartment = async (req, res) => {
 export const deleteDepartment = async (req, res) => {
     try {
         await DepartmentModel.destroy({
-            where: {id_departament: req.params.id}
+            where: {id: req.params.id}
         });
         res.json({
             "message":"Departamento borrado"

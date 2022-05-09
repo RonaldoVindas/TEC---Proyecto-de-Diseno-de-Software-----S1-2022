@@ -14,8 +14,8 @@ export const getUser_x_Email = async (req, res) => {
         const userXemail = await User_X_EmailModel.findAll({
             where: {
                 [Op.or]: [
-                    { id_user: req.params.id_usuario },
-                    { id_email: req.params.id_email }
+                    { id_user: req.params.id },
+                    { id_email: req.params.id }
                 ]
             }
         });
@@ -41,8 +41,8 @@ export const updateUser_x_Email = async (req, res) => {
         await User_X_EmailModel.update(req.body, {
             where: {
                 [Op.or]: [
-                    { id_user: req.params.id_usuario },
-                    { id_email: req.params.id_email }
+                    { id_user: req.params.id },
+                    { id_email: req.params.id }
                 ]
             }
         });
@@ -59,8 +59,8 @@ export const deleteUser_x_Email = async (req, res) => {
         await User_X_EmailModel.destroy({
             where: {
                 [Op.or]: [
-                    { id_user: req.params.id_usuario },
-                    { id_email: req.params.id_email }
+                    { id_user: req.params.id },
+                    { id_email: req.params.id }
                 ]
             }
         });

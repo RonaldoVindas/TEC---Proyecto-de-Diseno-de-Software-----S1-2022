@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 
-const URI = 'http://localhost:8000/management/'
+const URI = 'http://localhost:8000/registerUser/'
 
 const btnInfoNavStyle = {
     marginTop: "5px",
@@ -30,12 +30,22 @@ const CompCreateUsuario = () => {
         const res = await axios.get(URI);
         setDepartments(res.data);
     }
+
+    /*const [users, setUsers] = useState([])
+    useEffect( () => {
+        getUsers()
+    },[])
+    const getUsers = async () => {
+        const res = await axios.get(URI);
+        setUsers(res.data);
+    }*/
+
     const navigate = useNavigate()
 
     const createUser = async (e) => {
         e.preventDefault()
-        await axios.post(URI, {full_name: full_name, password_user: password_user, type_user: type_user, phone_number: phone_number, id_departament: id_departament, email: email})
-        navigate('/gestion')
+        await axios.post(URI, {full_name: full_name, password_user: password_user, type_user: type_user, phone_number: phone_number, id_departament: id_departament})
+        navigate('/management')
     }
 
     return(
@@ -49,14 +59,14 @@ const CompCreateUsuario = () => {
                 </div>
             </nav>
             <div className='container col-4'>
-                <h3>Crear Usuario</h3>
+                <h3>Create User</h3>
                 <form onSubmit={createUser}>
                     <div className='mb-3'>
                         <label className='form-label'>Email</label>
                         <input
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            type="text"
+                            type="email"
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
@@ -85,7 +95,7 @@ const CompCreateUsuario = () => {
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Type of User</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select className="form-select" aria-label="Default select example">
                             <option selected>Select a type</option>
                             <option value={type_user} onChange={(e) => setType_user(e.target.value)} className="form-select">Admin</option>
                             <option value={type_user} onChange={(e) => setType_user(e.target.value)} className="form-select">User</option>
@@ -93,10 +103,10 @@ const CompCreateUsuario = () => {
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Department</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select className="form-select" aria-label="Default select example">
                             <option selected>Select a Department</option>
                             { departments.map((department) => (
-                                <option value={department.id} onChange={(e) => setId_departament(e.target.value)} className="form-select">{department.name_department}</option>
+                                <option key={department.id} value={id_departament} onChange={(e) => setId_departament(e.target.value)} className="form-select">{department.id}</option>
                             ))}
                         </select>
                     </div>
