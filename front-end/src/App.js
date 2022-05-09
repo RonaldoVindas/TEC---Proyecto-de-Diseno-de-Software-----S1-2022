@@ -1,8 +1,7 @@
 import './Style.css';
-import CompShowBlogs from './blog/ShowBlogs';
 import ShowParqueoComponent from './parqueo/ShowParqueo';
-import CompCreateBlog from './blog/CreateBlog';
-import CompEditBlog from './blog/EditBlog';
+import CompCreateParqueo from './parqueo/CreateParqueo';
+import CompEditParqueo from './parqueo/EditParqueo';
 import NavbarComponent from './components/Navbar';
 import GestionAdminComponent from './components/gestionAdmin';
 import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom';
@@ -14,8 +13,8 @@ function App() {
           <Route path='/' element={<NavbarComponent/>}/>
           <Route path='/gestion' element={<GestionAdminComponent/>}/>
           <Route path='/parqueo' element={<ShowParqueoComponent/>}/>
-          <Route path='/create' element={<CompCreateBlog/>}/>
-          <Route path='/edit/:id' element={<CompEditBlog/>}/>
+          <Route path='/crearParqueo' element={<CompCreateParqueo/>}/>
+          <Route path='/editarParqueo/:id' element={<CompEditParqueo/>}/>
         </Routes>
       </BrowserRouter>
   );
