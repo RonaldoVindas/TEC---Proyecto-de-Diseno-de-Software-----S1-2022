@@ -1,4 +1,4 @@
-import ParkingModel from "../models/Parking.js";
+import ParkingModel from "../models/Parkings.js";
 
 export const getAllParkings = async (req, res) => {
     try {

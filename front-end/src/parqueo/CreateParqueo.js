@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 
-const URI = 'http://localhost:8000/parqueo/'
+const URI = 'http://localhost:8000/parking/'
 
 const btnInfoNavStyle = {
     marginTop: "5px",
@@ -23,7 +23,7 @@ const CompCreateParqueo = () => {
     const createParking = async (e) => {
         e.preventDefault()
         await axios.post(URI, {name_parking: name_parking, description_parking: description_parking, location_parking: location_parking, schedule_parking: schedule_parking})
-        navigate('/parqueo')
+        navigate('/parking')
     }
 
     return(
@@ -32,12 +32,12 @@ const CompCreateParqueo = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/parqueo`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Regresar</Link>
+                        <Link to={`/parking`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
             <div className='container col-4'>
-                <h3>Crear Parqueo</h3>
+                <h3>Crear Usuario</h3>
                 <form onSubmit={createParking}>
                     <div className='mb-3'>
                         <label className='form-label'>Parking Name</label>
@@ -65,7 +65,7 @@ const CompCreateParqueo = () => {
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Schedule</label>
-                        <textarea
+                        <input
                             value={schedule_parking}
                             onChange={(e) => setSchedule_parking(e.target.value)}
                             type="text"

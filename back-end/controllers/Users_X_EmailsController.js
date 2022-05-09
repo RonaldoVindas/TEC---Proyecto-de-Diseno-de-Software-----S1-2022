@@ -1,4 +1,4 @@
-import User_X_EmailModel from "../models/User_X_Email.js";
+import User_X_EmailModel from "../models/Users_X_Emails.js";
 
 export const getAllUser_x_Email = async (req, res) => {
     try {

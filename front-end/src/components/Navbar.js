@@ -11,7 +11,7 @@ const NavbarComponent = () => {
               <form className="d-flex">
                   <input className="form-control me-2" type="text" placeholder="Email" aria-label="Search"/>
                   <input className="form-control me-2" type="password" placeholder="Password" aria-label="Search"/>
-                  <Link to={`/gestion`} className="btn btn-info" type="submit">Login</Link>
+                  <Link to={`/management`} className="btn btn-info" type="submit">Login</Link>
               </form>
           </div>
       </nav>

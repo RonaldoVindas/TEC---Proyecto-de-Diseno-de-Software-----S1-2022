@@ -34,17 +34,17 @@ const GestionAdminComponent = () => {
                     <h1>ParkTec</h1>
                     <form className="d-flex">
                         <Link to={`/`} className="btn btn-info" style={btnInfoNavStyle} type="button">Logout</Link>
-                        <Link to={`/registrarUsuario/`} className="btn btn-info" style={btnInfoNavStyle} type="button">Registrar Usuario</Link>
+                        <Link to={`/registerUser/`} className="btn btn-info" style={btnInfoNavStyle} type="button">Register User</Link>
                     </form>
                 </div>
             </nav>
             <div className='centerButton'>
-                <Link to={`/parqueo`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-square-parking" style={iconStyle}></i></Link>
-                <Link to={`/contactarUsuario`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-envelope" style={iconStyle}></i></Link>
+                <Link to={`/parking`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-square-parking" style={iconStyle}></i></Link>
+                <Link to={`/contactUser`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-envelope" style={iconStyle}></i></Link>
             </div>
             <div className='centerButton'>
-                <Link to={`/editarPerfil`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}></i></Link>
-                <Link to={`/informes`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-chart-pie" style={iconStyle}></i></Link>
+                <Link to={`/editProfile`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}></i></Link>
+                <Link to={`/statistics`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-chart-pie" style={iconStyle}></i></Link>
             </div>
         </div>
     )

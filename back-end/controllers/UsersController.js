@@ -1,4 +1,4 @@
-import UserModel from "../models/User.js";
+import UserModel from "../models/Users.js";
 
 export const getAllUsers = async (req, res) => {
     try {
@@ -12,7 +12,7 @@ export const getAllUsers = async (req, res) => {
 export const getUser = async (req, res) => {
     try {
         const user = await UserModel.findAll({
-            where: { id_user: req.params.id }
+            where: { id: req.params.id }
         });
         res.json(user[0]);
     } catch (error) {
@@ -34,7 +34,7 @@ export const createUser = async (req, res) => {
 export const updateUser = async (req, res) => {
     try {
         await UserModel.update(req.body, {
-            where: { id_user: req.params.id }
+            where: { id: req.params.id }
         });
         res.json({
             "message":"Usuario actualizado"
@@ -47,7 +47,7 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
     try {
         await UserModel.destroy({
-            where: { id_user: req.params.id }
+            where: { id: req.params.id }
         });
         res.json({
             "message":"Usuario borrado"

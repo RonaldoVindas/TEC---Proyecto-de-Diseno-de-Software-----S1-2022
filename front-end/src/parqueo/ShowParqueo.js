@@ -3,7 +3,7 @@ import '../Style.css'
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
-const URI = 'http://localhost:8000/parqueo/'
+const URI = 'http://localhost:8000/parking/'
 
 const btnInfoNavStyle = {
   marginTop: "5px",
@@ -33,8 +33,8 @@ const ShowParqueoComponent = () => {
           <div className="container-fluid">
               <h1>ParkTec</h1>
               <form className="d-flex">
-                  <Link to={`/gestion`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Regresar</Link>
-                  <Link to={`/crearParqueo`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Crear Parqueo</Link>
+                  <Link to={`/management`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                  <Link to={`/createParking`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Create Parking</Link>
               </form>
           </div>
       </nav>
@@ -44,10 +44,10 @@ const ShowParqueoComponent = () => {
             <div className="card" key={parking.id}>
               <div className="card-body">
                 <h1>{parking.name_parking}</h1>
-                <p>Descripción: {parking.description_parking}</p>
-                <p>Localización: {parking.location_parking}</p>
-                <p>Horario: {parking.schedule_parking}</p>
-                <Link to={`/editarParqueo/${parking.id}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Editar Parqueo</Link>
+                <p>Description: {parking.description_parking}</p>
+                <p>Location: {parking.location_parking}</p>
+                <p>Schedule: {parking.schedule_parking}</p>
+                <Link to={`/editParking/${parking.id}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Edit Parking</Link>
                 <button onClick={ () => deleteParqueo(parking.id)} className='btn btn-danger' style={btnInfoNavStyle}><i className="fa-solid fa-circle-minus"></i></button>
               </div>
             </div>

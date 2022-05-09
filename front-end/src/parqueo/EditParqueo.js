@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import '../Style.css'
 import {Link} from 'react-router-dom'
 
-const URI = 'http://localhost:8000/parqueo/'
+const URI = 'http://localhost:8000/parking/'
 
 const btnInfoNavStyle = {
     marginTop: "5px",
@@ -29,7 +29,7 @@ const CompEditParqueo = () => {
             location_parking: location_parking,
             schedule_parking: schedule_parking
         })
-        navigate('/parqueo')
+        navigate('/parking')
     }
     
     useEffect( () => {
@@ -50,7 +50,7 @@ const CompEditParqueo = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/parqueo`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Regresar</Link>
+                        <Link to={`/parking`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
@@ -83,7 +83,7 @@ const CompEditParqueo = () => {
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Schedule</label>
-                        <textarea
+                        <input
                             value={schedule_parking}
                             onChange={(e) => setSchedule_parking(e.target.value)}
                             type="text"

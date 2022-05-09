@@ -2,6 +2,7 @@ import './Style.css';
 import ShowParqueoComponent from './parqueo/ShowParqueo';
 import CompCreateParqueo from './parqueo/CreateParqueo';
 import CompEditParqueo from './parqueo/EditParqueo';
+import CompCreateUsuario from './usuario/CreateUsuario';
 import NavbarComponent from './components/Navbar';
 import GestionAdminComponent from './components/gestionAdmin';
 import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom';
@@ -11,10 +12,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<NavbarComponent/>}/>
-          <Route path='/gestion' element={<GestionAdminComponent/>}/>
-          <Route path='/parqueo' element={<ShowParqueoComponent/>}/>
-          <Route path='/crearParqueo' element={<CompCreateParqueo/>}/>
-          <Route path='/editarParqueo/:id' element={<CompEditParqueo/>}/>
+          <Route path='/management' element={<GestionAdminComponent/>}/>
+          <Route path='/parking' element={<ShowParqueoComponent/>}/>
+          <Route path='/createParking' element={<CompCreateParqueo/>}/>
+          <Route path='/editParking/:id' element={<CompEditParqueo/>}/>
+          <Route path='/registerUser' element={<CompCreateUsuario/>}/>
         </Routes>
       </BrowserRouter>
   );
