@@ -1,4 +1,4 @@
-import UserModel from "../models/Users.js";
+import UserModel from "../models/Users.js"
 
 export const getAllUsers = async (req, res) => {
     try {
@@ -20,10 +20,20 @@ export const getUser = async (req, res) => {
     }
 }
 
+export const getUserID = async (req, res) => {
+    try {
+        const user = await UserModel.findAll({
+            where: { full_name: req.params.full_name }
+        });
+        res.json(user[0]);
+    } catch (error) {
+        res.json( {message: error.message} );
+    }
+}
+
 export const createUser = async (req, res) => {
     try {
-        await UserModel.create(req.body)
-        console.log(req.body);
+        await UserModel.create(req.body);
         res.json({
             "message":"Usuario creado"
         });

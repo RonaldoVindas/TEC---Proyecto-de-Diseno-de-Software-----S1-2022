@@ -1,10 +1,11 @@
-import axios from 'axios'
-import '../Style.css'
-import {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import axios from 'axios';
+import '../Style.css';
+import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const URI = 'http://localhost:8000/registerUser/'
+const URIUser = 'http://localhost:8000/registerUser/'
+const URIDepartment = 'http://localhost:8000/departmentUser/'
 
 const btnInfoNavStyle = {
     marginTop: "5px",
@@ -14,13 +15,13 @@ const btnInfoNavStyle = {
   }
 
 const CompCreateUsuario = () => {
-    const [description_department, setDescription_department] = useState('')
-    const [email, setEmail] = useState('')
-
     const [full_name, setFull_name] = useState('')
+    const [email, setEmail] = useState('')
+    const [email2, setEmail2] = useState('')
     const [password_user, setPassword_user] = useState('')
     const [type_user, setType_user] = useState('')
     const [phone_number, setPhone_number] = useState('')
+    const [description_job, setDescription_job] = useState('')
     const [id_department, setId_department] = useState('')
     
     const [departments, setDepartments] = useState([])
@@ -28,25 +29,17 @@ const CompCreateUsuario = () => {
       getDepartments()
     },[])
     const getDepartments = async () => {
-        const res = await axios.get(URI);
+        const res = await axios.get(URIDepartment);
         setDepartments(res.data);
     }
-
-    /*const [users, setUsers] = useState([])
-    useEffect( () => {
-        getUsers()
-    },[])
-    const getUsers = async () => {
-        const res = await axios.get(URI);
-        setUsers(res.data);
-    }*/
 
     const navigate = useNavigate()
 
     const createUser = async (e) => {
-        e.preventDefault()
-        await axios.post(URI, {full_name: full_name, password_user: password_user, type_user: type_user, phone_number: phone_number, id_department: id_department})
-        navigate('/management')
+        e.preventDefault();
+        await axios.post(URIUser, {full_name: full_name, email: email, email2: email2, password_user: password_user,
+            type_user: type_user, phone_number: phone_number, description_job: description_job, id_department: id_department});
+        navigate('/management');
     }
 
     return(
@@ -63,7 +56,7 @@ const CompCreateUsuario = () => {
                 <h3>Create User</h3>
                 <form onSubmit={createUser}>
                     <div className='mb-3'>
-                        <label className='form-label'>Email</label>
+                        <label className='form-label'>Email*</label>
                         <input
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -71,7 +64,15 @@ const CompCreateUsuario = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Password</label>
+                        <label className='form-label'>Alternate Email</label>
+                        <input
+                            value={email2}
+                            onChange={(e) => setEmail2(e.target.value)}
+                            type="email"
+                            className='form-control'/>
+                    </div>
+                    <div className='mb-3'>
+                        <label className='form-label'>Password*</label>
                         <input
                             value={password_user}
                             onChange={(e) => setPassword_user(e.target.value)}
@@ -79,7 +80,7 @@ const CompCreateUsuario = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Full Name</label>
+                        <label className='form-label'>Full Name*</label>
                         <input
                             value={full_name}
                             onChange={(e) => setFull_name(e.target.value)}
@@ -87,23 +88,25 @@ const CompCreateUsuario = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Phone Number</label>
+                        <label className='form-label'>Phone Number*</label>
                         <input
                             value={phone_number}
                             onChange={(e) => setPhone_number(e.target.value)}
+                            max={99999999}
                             type="number"
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Type of User</label>
+                        <label className='form-label'>Type of User*</label>
                         <select className="form-select" aria-label="Default select example" value={type_user} onChange={(e) => setType_user(e.target.value)}>
                             <option selected>Select a type</option>
-                            <option value="ADMIN" className="form-select">Admin</option>
-                            <option value="USER" className="form-select">User</option>
+                            <option value="ADMINISTRADOR SISTEMA" className="form-select">Admin</option>
+                            <option value="JEFATURA" className="form-select">Jefatura</option>
+                            <option value="FUNCIONARIO" className="form-select">Funcionario</option>
                         </select>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Department</label>
+                        <label className='form-label'>Department*</label>
                         <select className="form-select" aria-label="Default select example" value={id_department} onChange={(e) => setId_department(e.target.value)}>
                             <option selected>Select a Department</option>
                             { departments.map((department) => (
@@ -112,10 +115,10 @@ const CompCreateUsuario = () => {
                         </select>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Job Description</label>
+                        <label className='form-label'>Job Description*</label>
                         <textarea
-                            value={description_department}
-                            onChange={(e) => setDescription_department(e.target.value)}
+                            value={description_job}
+                            onChange={(e) => setDescription_job(e.target.value)}
                             type="text"
                             className='form-control'/>
                     </div>

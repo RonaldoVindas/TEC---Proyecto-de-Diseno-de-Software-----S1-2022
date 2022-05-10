@@ -15,14 +15,17 @@ const btnInfoNavStyle = {
 
 const CompCreateParqueo = () => {
     const [name_parking, setName_parking] = useState('')
-    const [description_parking, setDescription_parking] = useState('')
+    const [type_parking, setType_parking] = useState('')
     const [location_parking, setLocation_parking] = useState('')
-    const [schedule_parking, setSchedule_parking] = useState('')
+    const [schedule_start, setSchedule_start] = useState('')
+    const [schedule_end, setSchedule_end] = useState('')
+    const [space_parking, setSpace_parking] = useState('')
     const navigate = useNavigate()
 
     const createParking = async (e) => {
         e.preventDefault()
-        await axios.post(URI, {name_parking: name_parking, description_parking: description_parking, location_parking: location_parking, schedule_parking: schedule_parking})
+        await axios.post(URI, {name_parking: name_parking, type_parking: type_parking,  location_parking: location_parking,
+            schedule_start: schedule_start, schedule_end: schedule_end, space_parking: space_parking})
         navigate('/parking')
     }
 
@@ -37,7 +40,7 @@ const CompCreateParqueo = () => {
                 </div>
             </nav>
             <div className='container col-4'>
-                <h3>Crear Usuario</h3>
+                <h3>Create Parking</h3>
                 <form onSubmit={createParking}>
                     <div className='mb-3'>
                         <label className='form-label'>Parking Name</label>
@@ -48,27 +51,45 @@ const CompCreateParqueo = () => {
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Description</label>
-                        <textarea
-                            value={description_parking}
-                            onChange={(e) => setDescription_parking(e.target.value)}
-                            type="text"
-                            className='form-control'/>
+                        <label className='form-label'>Type of Parking*</label>
+                        <select className="form-select" aria-label="Default select example" value={type_parking} onChange={(e) => setType_parking(e.target.value)}>
+                            <option selected>Select a type</option>
+                            <option value="PRINCIPAL" className="form-select">Principal</option>
+                            <option value="CAMPUS" className="form-select">Campus</option>
+                            <option value="SUBCONTRATADO" className="form-select">Subcontratado</option>
+                        </select>
                     </div>
                     <div className='mb-3'>
                         <label className='form-label'>Location</label>
-                        <input
+                        <textarea
                             value={location_parking}
                             onChange={(e) => setLocation_parking(e.target.value)}
                             type="text"
                             className='form-control'/>
                     </div>
                     <div className='mb-3'>
-                        <label className='form-label'>Schedule</label>
+                        <label className='form-label'>Schedule Start</label>
                         <input
-                            value={schedule_parking}
-                            onChange={(e) => setSchedule_parking(e.target.value)}
-                            type="text"
+                            value={schedule_start}
+                            onChange={(e) => setSchedule_start(e.target.value)}
+                            type="time"
+                            className='form-control'/>
+                    </div>
+                    <div className='mb-3'>
+                        <label className='form-label'>Schedule End</label>
+                        <input
+                            value={schedule_end}
+                            onChange={(e) => setSchedule_end(e.target.value)}
+                            type="time"
+                            className='form-control'/>
+                    </div>
+                    <div className='mb-3'>
+                        <label className='form-label'>Space Available</label>
+                        <input
+                            value={space_parking}
+                            onChange={(e) => setSpace_parking(e.target.value)}
+                            type="number"
+                            min={0}
                             className='form-control'/>
                     </div>
                     <button type='submit' className='btn btn-primary'>Create</button>

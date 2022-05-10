@@ -39,12 +39,12 @@ const GestionAdminComponent = () => {
                 </div>
             </nav>
             <div className='centerButton'>
-                <Link to={`/parking`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-square-parking" style={iconStyle}></i></Link>
-                <Link to={`/contactUser`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-envelope" style={iconStyle}></i></Link>
+                <Link to={`/parking`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-square-parking" style={iconStyle}><h5>MANAGE PARKING</h5></i></Link>
+                <Link to={`/contactUser`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-envelope" style={iconStyle}><h5>CONTACT USER</h5></i></Link>
             </div>
             <div className='centerButton'>
-                <Link to={`/editProfile`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}></i></Link>
-                <Link to={`/statistics`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-chart-pie" style={iconStyle}></i></Link>
+                <Link to={`/editUser/id`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}><h5>EDIT PROFILE</h5></i></Link>
+                <Link to={`/statistics`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-chart-pie" style={iconStyle}><h5>STATISTICS</h5></i></Link>
             </div>
         </div>
     )

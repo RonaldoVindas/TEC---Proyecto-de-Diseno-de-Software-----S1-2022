@@ -44,9 +44,11 @@ const ShowParqueoComponent = () => {
             <div className="card" key={parking.id}>
               <div className="card-body">
                 <h1>{parking.name_parking}</h1>
-                <p>Description: {parking.description_parking}</p>
-                <p>Location: {parking.location_parking}</p>
-                <p>Schedule: {parking.schedule_parking}</p>
+                  <p>Type: {parking.type_parking}</p>
+                  <p>Location: {parking.location_parking}</p>
+                  <p>Schedule Start: {parking.schedule_start}</p>
+                  <p>Schedule End: {parking.schedule_end}</p>
+                  <p>Space Available: {parking.space_parking}</p>
                 <Link to={`/editParking/${parking.id}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Edit Parking</Link>
                 <button onClick={ () => deleteParqueo(parking.id)} className='btn btn-danger' style={btnInfoNavStyle}><i className="fa-solid fa-circle-minus"></i></button>
               </div>
