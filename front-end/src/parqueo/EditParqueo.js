@@ -22,6 +22,7 @@ const CompEditParqueo = () => {
     const [space_parking, setSpace_parking] = useState('')
     const navigate = useNavigate()
     const {id} = useParams()
+    const {email} = useParams()
 
     const updateParqueo = async (e) => {
         e.preventDefault()
@@ -33,7 +34,7 @@ const CompEditParqueo = () => {
             schedule_end: schedule_end,
             space_parking: space_parking
         })
-        navigate('/parking')
+        navigate(`/parking/${email}`)
     }
     
     useEffect( () => {
@@ -56,7 +57,7 @@ const CompEditParqueo = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/parking`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/parking/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
@@ -113,7 +114,7 @@ const CompEditParqueo = () => {
                             min={0}
                             className='form-control'/>
                     </div>
-                    <button type='submit' className='btn btn-primary'>Create</button>
+                    <button type='submit' className='btn btn-primary'>Modify</button>
                 </form>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import './Style.css';
+import CompNormalManagementComponent from './components/gestionGeneral';
 import ShowParqueoComponent from './parqueo/ShowParqueo';
 import CompCreateParqueo from './parqueo/CreateParqueo';
 import CompEditParqueo from './parqueo/EditParqueo';
@@ -13,12 +14,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<NavbarComponent/>}/>
-          <Route path='/management' element={<GestionAdminComponent/>}/>
-          <Route path='/parking' element={<ShowParqueoComponent/>}/>
-          <Route path='/createParking' element={<CompCreateParqueo/>}/>
-          <Route path='/editParking/:id' element={<CompEditParqueo/>}/>
-          <Route path='/registerUser' element={<CompCreateUsuario/>}/>
-          <Route path='/editUser/:id' element={<CompEditUser/>}/>
+          <Route path='/normalUser/:email' element={<CompNormalManagementComponent/>}/>
+          <Route path='/management/:email' element={<GestionAdminComponent/>}/>
+          <Route path='/parking/:email' element={<ShowParqueoComponent/>}/>
+          <Route path='/createParking/:email' element={<CompCreateParqueo/>}/>
+          <Route path='/editParking/:email/:id' element={<CompEditParqueo/>}/>
+          <Route path='/registerUser/:email' element={<CompCreateUsuario/>}/>
+          <Route path='/editUser/:email' element={<CompEditUser/>}/>
         </Routes>
       </BrowserRouter>
   );

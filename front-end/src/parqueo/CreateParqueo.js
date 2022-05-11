@@ -1,8 +1,8 @@
 import axios from 'axios'
 import '../Style.css'
-import {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
 
 const URI = 'http://localhost:8000/parking/'
 
@@ -22,11 +22,13 @@ const CompCreateParqueo = () => {
     const [space_parking, setSpace_parking] = useState('')
     const navigate = useNavigate()
 
+    const {email} = useParams()
+
     const createParking = async (e) => {
         e.preventDefault()
         await axios.post(URI, {name_parking: name_parking, type_parking: type_parking,  location_parking: location_parking,
             schedule_start: schedule_start, schedule_end: schedule_end, space_parking: space_parking})
-        navigate('/parking')
+        navigate(`/parking/${email}`)
     }
 
     return(
@@ -35,7 +37,7 @@ const CompCreateParqueo = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/parking`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/parking/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>

@@ -2,10 +2,12 @@ import axios from 'axios';
 import '../Style.css';
 import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const URIUser = 'http://localhost:8000/registerUser/'
+const URIUser = `http://localhost:8000/registerUser/`
 const URIDepartment = 'http://localhost:8000/departmentUser/'
+
+var bcrypt = require('bcryptjs');
 
 const btnInfoNavStyle = {
     marginTop: "5px",
@@ -15,9 +17,11 @@ const btnInfoNavStyle = {
   }
 
 const CompCreateUsuario = () => {
+    const {email} = useParams()
+
     const [full_name, setFull_name] = useState('')
-    const [email, setEmail] = useState('')
-    const [email2, setEmail2] = useState('')
+    const [emailRegis, setEmail] = useState('')
+    const [emailRegis2, setEmail2] = useState('')
     const [password_user, setPassword_user] = useState('')
     const [type_user, setType_user] = useState('')
     const [phone_number, setPhone_number] = useState('')
@@ -36,10 +40,12 @@ const CompCreateUsuario = () => {
     const navigate = useNavigate()
 
     const createUser = async (e) => {
+        const hashedPassword = bcrypt.hashSync(password_user, 8);
         e.preventDefault();
-        await axios.post(URIUser, {full_name: full_name, email: email, email2: email2, password_user: password_user,
-            type_user: type_user, phone_number: phone_number, description_job: description_job, id_department: id_department});
-        navigate('/management');
+        await axios.post(URIUser, {full_name: full_name, email: emailRegis, email2: emailRegis2,
+            password_user: hashedPassword, type_user: type_user, phone_number: phone_number,
+            description_job: description_job, id_department: id_department});
+        navigate(`/management/${email}`);
     }
 
     return(
@@ -48,7 +54,7 @@ const CompCreateUsuario = () => {
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/management`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/management/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
@@ -58,7 +64,7 @@ const CompCreateUsuario = () => {
                     <div className='mb-3'>
                         <label className='form-label'>Email*</label>
                         <input
-                            value={email}
+                            value={emailRegis}
                             onChange={(e) => setEmail(e.target.value)}
                             type="email"
                             className='form-control'/>
@@ -66,7 +72,7 @@ const CompCreateUsuario = () => {
                     <div className='mb-3'>
                         <label className='form-label'>Alternate Email</label>
                         <input
-                            value={email2}
+                            value={emailRegis2}
                             onChange={(e) => setEmail2(e.target.value)}
                             type="email"
                             className='form-control'/>
@@ -93,6 +99,7 @@ const CompCreateUsuario = () => {
                             value={phone_number}
                             onChange={(e) => setPhone_number(e.target.value)}
                             max={99999999}
+                            min={10000000}
                             type="number"
                             className='form-control'/>
                     </div>

@@ -26,7 +26,7 @@ const btnInfoNavStyle = {
     marginRight: "5px"
 }
 
-const GestionGeneralComponent = () => {
+const CompNormalManagementComponent = () => {
     return (
         <div>
             <nav className="navbar navbar-dark bg-primary">
@@ -34,20 +34,15 @@ const GestionGeneralComponent = () => {
                     <h1>ParkTec</h1>
                     <form className="d-flex">
                         <Link to={`/`} className="btn btn-info" style={btnInfoNavStyle} type="button">Logout</Link>
-                        <Link to={`/registerUser/`} className="btn btn-info" style={btnInfoNavStyle} type="button">Register User</Link>
                     </form>
                 </div>
             </nav>
             <div className='centerButton'>
                 <Link to={`/parking`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-car" style={iconStyle}><h5> Mis vehiculos </h5></i></Link>
-                
-                <Link to={`/contactUser`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}><h5> Editar Perfil </h5></i></Link>
-                
+                <Link to={`/contactUser`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}><h5> Editar Perfil </h5></i></Link>  
             </div>
-            
-            
         </div>
     )
 }
 
-export default GestionGeneralComponent
+export default CompNormalManagementComponent

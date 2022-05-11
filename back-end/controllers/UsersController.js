@@ -12,7 +12,7 @@ export const getAllUsers = async (req, res) => {
 export const getUser = async (req, res) => {
     try {
         const user = await UserModel.findAll({
-            where: { id: req.params.id }
+            where: { email: req.params.email }
         });
         res.json(user[0]);
     } catch (error) {
@@ -20,12 +20,14 @@ export const getUser = async (req, res) => {
     }
 }
 
-export const getUserID = async (req, res) => {
+export const auth = async (req, res) => {
     try {
-        const user = await UserModel.findAll({
-            where: { full_name: req.params.full_name }
+        const authUser = await UserModel.findAll({
+            where: {
+                email: req.body.email,
+            }
         });
-        res.json(user[0]);
+        res.json(authUser[0]);
     } catch (error) {
         res.json( {message: error.message} );
     }
@@ -45,7 +47,7 @@ export const createUser = async (req, res) => {
 export const updateUser = async (req, res) => {
     try {
         await UserModel.update(req.body, {
-            where: { id: req.params.id }
+            where: { email: req.params.email }
         });
         res.json({
             "message":"Usuario actualizado"
@@ -58,7 +60,7 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
     try {
         await UserModel.destroy({
-            where: { id: req.params.id }
+            where: { email: req.params.email }
         });
         res.json({
             "message":"Usuario borrado"

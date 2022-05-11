@@ -7,6 +7,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 const URIUser = 'http://localhost:8000/registerUser/'
 const URIDepartment = 'http://localhost:8000/departmentUser/'
 
+var bcrypt = require('bcryptjs');
+
 const btnInfoNavStyle = {
     marginTop: "5px",
     marginBottom: "5px",
@@ -16,46 +18,38 @@ const btnInfoNavStyle = {
 
 const CompEditUser = () => {
     const [full_name, setFull_name] = useState('')
-    const [email, setEmail] = useState('')
-    const [email2, setEmail2] = useState('')
+    const [emailRegis, setEmail] = useState('')
+    const [emailRegis2, setEmail2] = useState('')
     const [password_user, setPassword_user] = useState('')
     const [type_user, setType_user] = useState('')
     const [phone_number, setPhone_number] = useState('')
     const [description_job, setDescription_job] = useState('')
     const [id_department, setId_department] = useState('')
+    const {email} = useParams()
     const navigate = useNavigate()
-    const {id} = useParams()
-
-    const [departments, setDepartments] = useState([])
-    useEffect( () => {
-      getDepartments()
-    },[])
-    const getDepartments = async () => {
-        const res = await axios.get(URIDepartment);
-        setDepartments(res.data);
-    }
 
     const updateUsuario = async (e) => {
+        const hashedPassword = bcrypt.hashSync(password_user, 8);
         e.preventDefault()
-        await axios.put(URIUser+id, {
+        await axios.put(URIUser+email, {
             full_name: full_name,
-            email: email,
-            email2: email2,
-            password_user: password_user,
+            email: emailRegis,
+            email2: emailRegis2,
+            password_user: hashedPassword,
             type_user: type_user,
             phone_number: phone_number,
             description_job: description_job,
             id_department: id_department
         })
-        navigate('/management')
+        navigate(`/management/${email}`)
     }
     
     useEffect( () => {
-        getUsuarioById()
+        getUsuarioByEmail()
     }, [])
     
-    const getUsuarioById = async () => {
-        const res = await axios.get(URIUser+id)
+    const getUsuarioByEmail = async () => {
+        const res = await axios.get(URIUser+email)
         setFull_name(res.data.full_name)
         setEmail(res.data.email)
         setEmail2(res.data.email2)
@@ -66,13 +60,22 @@ const CompEditUser = () => {
         setId_department(res.data.id_department)
     }
 
+    const [departments, setDepartments] = useState([])
+    useEffect( () => {
+      getDepartments()
+    },[])
+    const getDepartments = async () => {
+        const res = await axios.get(URIDepartment);
+        setDepartments(res.data);
+    }
+    
     return(
         <div className='createParqueo'>
             <nav className="navbar navbar-dark bg-primary">
                 <div className="container-fluid">
                     <h1>ParkTec</h1>
                     <form className="d-flex">
-                        <Link to={`/management`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
+                        <Link to={`/management/${email}`} className="btn btn-info" style={btnInfoNavStyle} type="submit">Return</Link>
                     </form>
                 </div>
             </nav>
@@ -82,7 +85,7 @@ const CompEditUser = () => {
                     <div className='mb-3'>
                         <label className='form-label'>Email*</label>
                         <input
-                            value={email}
+                            value={emailRegis}
                             onChange={(e) => setEmail(e.target.value)}
                             type="email"
                             className='form-control'/>
@@ -90,7 +93,7 @@ const CompEditUser = () => {
                     <div className='mb-3'>
                         <label className='form-label'>Alternate Email</label>
                         <input
-                            value={email2}
+                            value={emailRegis2}
                             onChange={(e) => setEmail2(e.target.value)}
                             type="email"
                             className='form-control'/>
@@ -117,6 +120,7 @@ const CompEditUser = () => {
                             value={phone_number}
                             onChange={(e) => setPhone_number(e.target.value)}
                             max={99999999}
+                            min={10000000}
                             type="number"
                             className='form-control'/>
                     </div>
@@ -146,7 +150,7 @@ const CompEditUser = () => {
                             type="text"
                             className='form-control'/>
                     </div>
-                    <button type='submit' className='btn btn-primary'>Create</button>
+                    <button type='submit' className='btn btn-primary'>Modify</button>
                 </form>
             </div>
         </div>
