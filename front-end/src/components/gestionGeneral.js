@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../Style.css';
 import {Link} from 'react-router-dom'
 
@@ -27,6 +29,9 @@ const btnInfoNavStyle = {
 }
 
 const CompNormalManagementComponent = () => {
+
+    const {email} = useParams()
+
     return (
         <div>
             <nav className="navbar navbar-dark bg-primary">
@@ -38,8 +43,8 @@ const CompNormalManagementComponent = () => {
                 </div>
             </nav>
             <div className='centerButton'>
-                <Link to={`/parking`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-car" style={iconStyle}><h5> Mis vehiculos </h5></i></Link>
-                <Link to={`/contactUser`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}><h5> Editar Perfil </h5></i></Link>  
+                <Link to={`/vehicle/${email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-car" style={iconStyle}><h5> Mis vehiculos </h5></i></Link>
+                <Link to={`/editNormalUser/${email}`} className="btn btn-info" style={btnInfoStyle} type="button"><i className="fa-solid fa-pen-to-square" style={iconStyle}><h5> Editar Perfil </h5></i></Link>  
             </div>
         </div>
     )

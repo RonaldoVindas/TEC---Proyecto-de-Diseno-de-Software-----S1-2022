@@ -21,7 +21,7 @@ const NavbarComponent = () => {
       if (authUserResult.data.type_user == "ADMINISTRADOR SISTEMA") {
         navigate(`/management/${authUserResult.data.email}`)
       } else {
-        navigate(`/normalUser/${authUserResult.data.email}`)
+        navigate(`/normalUserManagement/${authUserResult.data.email}`)
       }
     } else {
       throw alert("Incorrect password or email")
